@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_static_elements_footers",
+  "info": {
+    "displayName": "footer",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "socials": {
+      "displayName": "socials",
+      "type": "component",
+      "repeatable": false,
+      "component": "footer-elements.footer-elements",
+      "required": true
+    },
+    "quick_links": {
+      "displayName": "quick_links",
+      "type": "component",
+      "repeatable": false,
+      "component": "footer-elements.quick-links-column",
+      "required": true
+    },
+    "open_hours": {
+      "displayName": "open_hours",
+      "type": "component",
+      "repeatable": false,
+      "component": "footer-elements.opening-hours-column",
+      "required": true
+    }
+  }
+}

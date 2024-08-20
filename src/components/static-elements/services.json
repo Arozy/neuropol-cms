@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_static_elements_services",
+  "info": {
+    "displayName": "services"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 80,
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 500
+    },
+    "item": {
+      "displayName": "about-items",
+      "type": "component",
+      "repeatable": true,
+      "component": "about-items.about-items",
+      "required": true
+    }
+  }
+}

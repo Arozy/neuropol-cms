@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "header.header",
+        "steps.steps",
+        "steps.step-item",
+        "cards.card",
+        "button.primary-button",
+        "button.buttons"
+      ],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": false,
+      "maxLength": 80,
+      "unique": true
+    },
+    "Description": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200,
+      "unique": false
+    }
+  }
+}

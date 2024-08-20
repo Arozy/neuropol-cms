@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_steps_step_items",
+  "info": {
+    "displayName": "step-item"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "required": true,
+      "regex": "^(icofont-|fa-)",
+      "unique": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 20
+    },
+    "Description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 60
+    }
+  }
+}

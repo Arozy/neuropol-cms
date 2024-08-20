@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_footer_elements_quick_links_columns",
+  "info": {
+    "displayName": "quick-links-column"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "quick_link": {
+      "displayName": "quick-link",
+      "type": "component",
+      "repeatable": true,
+      "component": "footer-elements.quick-link",
+      "required": true,
+      "max": 10
+    }
+  }
+}

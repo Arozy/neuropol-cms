@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_footer_elements_opening_hours_columns",
+  "info": {
+    "displayName": "opening-hours-column"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 20,
+      "unique": true
+    },
+    "Description": {
+      "type": "string",
+      "maxLength": 60,
+      "required": true
+    },
+    "work_day": {
+      "type": "string",
+      "regex": "\\\\b\\\\d{1,2}:\\\\d{2}\\\\s*-\\\\s*\\\\d{1,2}:\\\\d{2}\\\\b",
+      "required": true
+    },
+    "weekend": {
+      "type": "string",
+      "required": true
+    },
+    "bank_holiday": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

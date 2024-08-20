@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_button_primary_buttons",
+  "info": {
+    "displayName": "primary-button",
+    "icon": "bell",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "primary_button": {
+      "displayName": "buttons",
+      "type": "component",
+      "repeatable": false,
+      "component": "button.buttons"
+    }
+  }
+}

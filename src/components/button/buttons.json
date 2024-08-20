@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_button_buttons",
+  "info": {
+    "displayName": "buttons",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "maxLength": 90,
+      "minLength": 30,
+      "default": "Sprawdź teraz",
+      "required": true
+    },
+    "action": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

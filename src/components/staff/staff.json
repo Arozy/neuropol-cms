@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_staff_staff",
+  "info": {
+    "displayName": "staff",
+    "icon": "user",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 120,
+      "required": true,
+      "unique": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "staff.staff-items",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_ctas_cta_banners",
+  "info": {
+    "displayName": "CTA-banner",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 80,
+      "unique": false,
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 180
+    },
+    "left": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.buttons",
+      "required": false
+    },
+    "right": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.buttons"
+    }
+  }
+}

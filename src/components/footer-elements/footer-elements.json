@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_footer_elements_footer_elements",
+  "info": {
+    "displayName": "footer-elements"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "regex": "^\\\\s*([a-zA-Z]+\\\\s*){1,3}$",
+      "required": true,
+      "unique": true
+    },
+    "Description": {
+      "type": "text",
+      "maxLength": 120,
+      "required": true
+    },
+    "media_button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.buttons"
+    },
+    "icon": {
+      "type": "string",
+      "regex": "^(icofont-|fa-)",
+      "required": true
+    },
+    "action": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

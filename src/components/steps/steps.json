@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_steps_steps",
+  "info": {
+    "displayName": "steps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 120
+    },
+    "step": {
+      "type": "component",
+      "repeatable": false,
+      "component": "steps.step-item"
+    }
+  }
+}

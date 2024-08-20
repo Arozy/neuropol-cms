@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_cards_cards",
+  "info": {
+    "displayName": "Card",
+    "icon": "folder",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 16
+    },
+    "Description": {
+      "type": "text",
+      "maxLength": 140,
+      "minLength": 40,
+      "required": true
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "button.buttons"
+    },
+    "icon": {
+      "type": "string",
+      "regex": "^(icofont-|fa-)"
+    }
+  }
+}

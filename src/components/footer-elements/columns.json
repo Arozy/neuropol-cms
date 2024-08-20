@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_footer_elements_columns",
+  "info": {
+    "displayName": "columns"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 20,
+      "regex": "^\\\\s*([a-zA-Z]+\\\\s*){1,3}$"
+    },
+    "Description": {
+      "type": "text",
+      "maxLength": 120,
+      "required": true
+    }
+  }
+}

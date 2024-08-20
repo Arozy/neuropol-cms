@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "home_headers",
+  "info": {
+    "singularName": "home-header",
+    "pluralName": "home-headers",
+    "displayName": "home-header"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 120
+    },
+    "buttons": {
+      "type": "dynamiczone",
+      "components": [
+        "button.primary-button"
+      ]
+    }
+  }
+}

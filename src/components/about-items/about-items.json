@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_about_items_about_items",
+  "info": {
+    "displayName": "about-items"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 30,
+      "required": true
+    },
+    "Description": {
+      "type": "text",
+      "maxLength": 200,
+      "required": true
+    }
+  }
+}

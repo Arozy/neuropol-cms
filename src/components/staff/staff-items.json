@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_staff_staff_items",
+  "info": {
+    "displayName": "staff-items",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "photo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "degree": {
+      "type": "enumeration",
+      "enum": [
+        "Lic.",
+        "Mgr",
+        "Lekarz",
+        "Dr n. med.",
+        "Dr hab. n. med.",
+        "Prof."
+      ]
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "Fizjoterapeuta",
+        "Neurologopeda",
+        "Terapeuta",
+        "Lekarz"
+      ],
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 260
+    }
+  }
+}

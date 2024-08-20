@@ -136,6 +136,39 @@ export interface HeaderHeader extends Schema.Component {
   };
 }
 
+export interface ServicesServices extends Schema.Component {
+  collectionName: 'components_services_services';
+  info: {
+    displayName: 'services';
+    icon: 'server';
+  };
+  attributes: {
+    service_item: Attribute.Component<'services.services-table', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+  };
+}
+
+export interface ServicesServicesTable extends Schema.Component {
+  collectionName: 'components_services_services_tables';
+  info: {
+    displayName: 'services-table';
+    icon: 'layout';
+  };
+  attributes: {};
+}
+
 export interface FooterElementsQuickLinksColumn extends Schema.Component {
   collectionName: 'components_footer_elements_quick_links_columns';
   info: {
@@ -337,6 +370,8 @@ declare module '@strapi/types' {
       'staff.staff': StaffStaff;
       'staff.staff-items': StaffStaffItems;
       'header.header': HeaderHeader;
+      'services.services': ServicesServices;
+      'services.services-table': ServicesServicesTable;
       'footer-elements.quick-links-column': FooterElementsQuickLinksColumn;
       'footer-elements.quick-link': FooterElementsQuickLink;
       'footer-elements.opening-hours-column': FooterElementsOpeningHoursColumn;

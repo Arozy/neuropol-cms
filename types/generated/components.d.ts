@@ -13,7 +13,13 @@ export interface StepsSteps extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 120;
       }>;
-    step: Attribute.Component<'steps.step-item'>;
+    step: Attribute.Component<'steps.step-item', true> &
+      Attribute.SetMinMax<
+        {
+          max: 3;
+        },
+        number
+      >;
   };
 }
 
@@ -84,6 +90,50 @@ export interface TrainingsForm extends Schema.Component {
   attributes: {
     image: Attribute.Media<'images'> & Attribute.Required;
     title: Attribute.String;
+  };
+}
+
+export interface ServicesServices extends Schema.Component {
+  collectionName: 'components_services_services';
+  info: {
+    displayName: 'services';
+    icon: 'server';
+  };
+  attributes: {
+    service_item: Attribute.Component<'services.services-table', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+  };
+}
+
+export interface ServicesServicesTable extends Schema.Component {
+  collectionName: 'components_services_services_tables';
+  info: {
+    displayName: 'services-table';
+    icon: 'layout';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    price: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0.01;
+        },
+        number
+      >;
   };
 }
 
@@ -181,50 +231,6 @@ export interface HeaderHeader extends Schema.Component {
     primary: Attribute.Component<'button.buttons'>;
     secondary: Attribute.Component<'button.buttons'>;
     image: Attribute.Media<'images'> & Attribute.Required;
-  };
-}
-
-export interface ServicesServices extends Schema.Component {
-  collectionName: 'components_services_services';
-  info: {
-    displayName: 'services';
-    icon: 'server';
-  };
-  attributes: {
-    service_item: Attribute.Component<'services.services-table', true> &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-  };
-}
-
-export interface ServicesServicesTable extends Schema.Component {
-  collectionName: 'components_services_services_tables';
-  info: {
-    displayName: 'services-table';
-    icon: 'layout';
-    description: '';
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    price: Attribute.Decimal &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 0.01;
-        },
-        number
-      >;
   };
 }
 
@@ -369,7 +375,6 @@ export interface CardsCard extends Schema.Component {
   attributes: {
     title: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         maxLength: 16;
       }>;
@@ -440,13 +445,13 @@ declare module '@strapi/types' {
       'trainings.trainings': TrainingsTrainings;
       'trainings.training-item': TrainingsTrainingItem;
       'trainings.form': TrainingsForm;
+      'services.services': ServicesServices;
+      'services.services-table': ServicesServicesTable;
       'static-elements.services': StaticElementsServices;
       'static-elements.footer': StaticElementsFooter;
       'staff.staff': StaffStaff;
       'staff.staff-items': StaffStaffItems;
       'header.header': HeaderHeader;
-      'services.services': ServicesServices;
-      'services.services-table': ServicesServicesTable;
       'footer-elements.quick-links-column': FooterElementsQuickLinksColumn;
       'footer-elements.quick-link': FooterElementsQuickLink;
       'footer-elements.opening-hours-column': FooterElementsOpeningHoursColumn;

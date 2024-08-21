@@ -10,7 +10,7 @@
     "title": {
       "type": "string",
       "required": true,
-      "unique": true,
+      "unique": false,
       "maxLength": 16
     },
     "Description": {

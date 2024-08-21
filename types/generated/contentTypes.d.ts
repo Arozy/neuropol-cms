@@ -942,12 +942,21 @@ export interface ApiPagePage extends Schema.CollectionType {
         'staff.staff-items',
         'about-items.about-items',
         'trainings.trainings',
-        'trainings.training-item'
+        'trainings.training-item',
+        'trainings.form',
+        'static-elements.services',
+        'static-elements.footer',
+        'footer-elements.quick-links-column',
+        'footer-elements.quick-link',
+        'footer-elements.opening-hours-column',
+        'footer-elements.footer-elements',
+        'footer-elements.columns',
+        'ctas.cta-banner',
+        'contact.contact'
       ]
     > &
       Attribute.Required;
     title: Attribute.String &
-      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         maxLength: 80;
       }>;

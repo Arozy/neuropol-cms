@@ -18,8 +18,9 @@
     },
     "step": {
       "type": "component",
-      "repeatable": false,
-      "component": "steps.step-item"
+      "repeatable": true,
+      "component": "steps.step-item",
+      "max": 3
     }
   }
 }

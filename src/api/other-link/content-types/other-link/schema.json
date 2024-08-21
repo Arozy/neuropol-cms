@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "other_links",
+  "info": {
+    "singularName": "other-link",
+    "pluralName": "other-links",
+    "displayName": "other-link"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "href": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

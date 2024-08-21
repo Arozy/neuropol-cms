@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hours",
+  "info": {
+    "singularName": "hour",
+    "pluralName": "hours",
+    "displayName": "hour",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "time": {
+      "type": "string",
+      "required": true
+    },
+    "period": {
+      "type": "enumeration",
+      "enum": [
+        "Poniedziałek - piątek",
+        "Sobota - niedziela",
+        "Dni świąteczne"
+      ],
+      "required": true
+    }
+  }
+}

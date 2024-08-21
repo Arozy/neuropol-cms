@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "training_entities",
+  "info": {
+    "singularName": "training-entity",
+    "pluralName": "training-entities",
+    "displayName": "training-entity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "item": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

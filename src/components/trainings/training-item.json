@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_trainings_training_items",
+  "info": {
+    "displayName": "training-item",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "podstawowy",
+        "standard",
+        "premium"
+      ],
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "training_entities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::training-entity.training-entity"
+    }
+  }
+}

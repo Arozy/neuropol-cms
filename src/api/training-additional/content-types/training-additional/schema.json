@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "training_additionals",
+  "info": {
+    "singularName": "training-additional",
+    "pluralName": "training-additionals",
+    "displayName": "training-additional",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

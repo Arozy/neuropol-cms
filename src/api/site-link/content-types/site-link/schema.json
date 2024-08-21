@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "site_links",
+  "info": {
+    "singularName": "site-link",
+    "pluralName": "site-links",
+    "displayName": "site-link",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "idName": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "site_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::site-link.site-link"
+    }
+  }
+}

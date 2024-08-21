@@ -9,7 +9,6 @@
     "text": {
       "type": "string",
       "maxLength": 90,
-      "minLength": 30,
       "default": "Sprawdź teraz",
       "required": true
     },

@@ -2,8 +2,20 @@
   "collectionName": "components_services_services_tables",
   "info": {
     "displayName": "services-table",
-    "icon": "layout"
+    "icon": "layout",
+    "description": ""
   },
   "options": {},
-  "attributes": {}
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0.01
+    }
+  }
 }

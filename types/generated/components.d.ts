@@ -38,6 +38,55 @@ export interface StepsStepItem extends Schema.Component {
   };
 }
 
+export interface TrainingsTrainings extends Schema.Component {
+  collectionName: 'components_trainings_trainings';
+  info: {
+    displayName: 'trainings';
+    description: '';
+  };
+  attributes: {
+    heading: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    item: Attribute.Component<'trainings.training-item', true> &
+      Attribute.Required;
+    training_additionals: Attribute.Relation<
+      'trainings.trainings',
+      'oneToMany',
+      'api::training-additional.training-additional'
+    >;
+  };
+}
+
+export interface TrainingsTrainingItem extends Schema.Component {
+  collectionName: 'components_trainings_training_items';
+  info: {
+    displayName: 'training-item';
+    description: '';
+  };
+  attributes: {
+    type: Attribute.Enumeration<['podstawowy', 'standard', 'premium']> &
+      Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    price: Attribute.Decimal & Attribute.Required;
+    training_entities: Attribute.Relation<
+      'trainings.training-item',
+      'oneToMany',
+      'api::training-entity.training-entity'
+    >;
+  };
+}
+
+export interface TrainingsForm extends Schema.Component {
+  collectionName: 'components_trainings_forms';
+  info: {
+    displayName: 'form';
+  };
+  attributes: {
+    image: Attribute.Media<'images'> & Attribute.Required;
+    title: Attribute.String;
+  };
+}
+
 export interface StaticElementsServices extends Schema.Component {
   collectionName: 'components_static_elements_services';
   info: {
@@ -126,7 +175,6 @@ export interface HeaderHeader extends Schema.Component {
   attributes: {
     title: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         maxLength: 120;
       }>;
@@ -165,8 +213,19 @@ export interface ServicesServicesTable extends Schema.Component {
   info: {
     displayName: 'services-table';
     icon: 'layout';
+    description: '';
   };
-  attributes: {};
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    price: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0.01;
+        },
+        number
+      >;
+  };
 }
 
 export interface FooterElementsQuickLinksColumn extends Schema.Component {
@@ -286,6 +345,20 @@ export interface CtasCtaBanner extends Schema.Component {
   };
 }
 
+export interface ContactContact extends Schema.Component {
+  collectionName: 'components_contact_contacts';
+  info: {
+    displayName: 'contact';
+    icon: 'phone';
+  };
+  attributes: {
+    icon: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    value: Attribute.String & Attribute.Required;
+    action: Attribute.String;
+  };
+}
+
 export interface CardsCard extends Schema.Component {
   collectionName: 'components_cards_cards';
   info: {
@@ -333,7 +406,6 @@ export interface ButtonButtons extends Schema.Component {
     text: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
-        minLength: 30;
         maxLength: 90;
       }> &
       Attribute.DefaultTo<'Sprawd\u017A teraz'>;
@@ -365,6 +437,9 @@ declare module '@strapi/types' {
     export interface Components {
       'steps.steps': StepsSteps;
       'steps.step-item': StepsStepItem;
+      'trainings.trainings': TrainingsTrainings;
+      'trainings.training-item': TrainingsTrainingItem;
+      'trainings.form': TrainingsForm;
       'static-elements.services': StaticElementsServices;
       'static-elements.footer': StaticElementsFooter;
       'staff.staff': StaffStaff;
@@ -378,6 +453,7 @@ declare module '@strapi/types' {
       'footer-elements.footer-elements': FooterElementsFooterElements;
       'footer-elements.columns': FooterElementsColumns;
       'ctas.cta-banner': CtasCtaBanner;
+      'contact.contact': ContactContact;
       'cards.card': CardsCard;
       'button.primary-button': ButtonPrimaryButton;
       'button.buttons': ButtonButtons;

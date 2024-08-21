@@ -853,34 +853,61 @@ export interface ApiArticleArticle extends Schema.SingleType {
   };
 }
 
-export interface ApiHomeHeaderHomeHeader extends Schema.CollectionType {
-  collectionName: 'home_headers';
+export interface ApiHourHour extends Schema.CollectionType {
+  collectionName: 'hours';
   info: {
-    singularName: 'home-header';
-    pluralName: 'home-headers';
-    displayName: 'home-header';
+    singularName: 'hour';
+    pluralName: 'hours';
+    displayName: 'hour';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 120;
-      }>;
-    buttons: Attribute.DynamicZone<['button.primary-button']>;
+    time: Attribute.String & Attribute.Required;
+    period: Attribute.Enumeration<
+      [
+        'Poniedzia\u0142ek - pi\u0105tek',
+        'Sobota - niedziela',
+        'Dni \u015Bwi\u0105teczne'
+      ]
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::hour.hour', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::hour.hour', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOtherLinkOtherLink extends Schema.CollectionType {
+  collectionName: 'other_links';
+  info: {
+    singularName: 'other-link';
+    pluralName: 'other-links';
+    displayName: 'other-link';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    href: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::home-header.home-header',
+      'api::other-link.other-link',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::home-header.home-header',
+      'api::other-link.other-link',
       'oneToOne',
       'admin::user'
     > &
@@ -908,7 +935,14 @@ export interface ApiPagePage extends Schema.CollectionType {
         'steps.step-item',
         'cards.card',
         'button.primary-button',
-        'button.buttons'
+        'button.buttons',
+        'services.services',
+        'services.services-table',
+        'staff.staff',
+        'staff.staff-items',
+        'about-items.about-items',
+        'trainings.trainings',
+        'trainings.training-item'
       ]
     > &
       Attribute.Required;
@@ -918,7 +952,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         maxLength: 80;
       }>;
     Description: Attribute.String &
-      Attribute.Required &
       Attribute.SetMinMaxLength<{
         maxLength: 200;
       }>;
@@ -928,6 +961,141 @@ export interface ApiPagePage extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSharedDatumSharedDatum extends Schema.SingleType {
+  collectionName: 'shared_data';
+  info: {
+    singularName: 'shared-datum';
+    pluralName: 'shared-data';
+    displayName: 'shared-data';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tel: Attribute.String & Attribute.Required;
+    email: Attribute.Email & Attribute.Required;
+    address: Attribute.String & Attribute.Required;
+    facebook: Attribute.String & Attribute.Required;
+    instagram: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shared-datum.shared-datum',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shared-datum.shared-datum',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSiteLinkSiteLink extends Schema.CollectionType {
+  collectionName: 'site_links';
+  info: {
+    singularName: 'site-link';
+    pluralName: 'site-links';
+    displayName: 'site-link';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    href: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    idName: Attribute.String & Attribute.Required & Attribute.Unique;
+    site_links: Attribute.Relation<
+      'api::site-link.site-link',
+      'oneToMany',
+      'api::site-link.site-link'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::site-link.site-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::site-link.site-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTrainingAdditionalTrainingAdditional
+  extends Schema.CollectionType {
+  collectionName: 'training_additionals';
+  info: {
+    singularName: 'training-additional';
+    pluralName: 'training-additionals';
+    displayName: 'training-additional';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    data: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::training-additional.training-additional',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::training-additional.training-additional',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTrainingEntityTrainingEntity extends Schema.CollectionType {
+  collectionName: 'training_entities';
+  info: {
+    singularName: 'training-entity';
+    pluralName: 'training-entities';
+    displayName: 'training-entity';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    item: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::training-entity.training-entity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::training-entity.training-entity',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -951,8 +1119,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::article.article': ApiArticleArticle;
-      'api::home-header.home-header': ApiHomeHeaderHomeHeader;
+      'api::hour.hour': ApiHourHour;
+      'api::other-link.other-link': ApiOtherLinkOtherLink;
       'api::page.page': ApiPagePage;
+      'api::shared-datum.shared-datum': ApiSharedDatumSharedDatum;
+      'api::site-link.site-link': ApiSiteLinkSiteLink;
+      'api::training-additional.training-additional': ApiTrainingAdditionalTrainingAdditional;
+      'api::training-entity.training-entity': ApiTrainingEntityTrainingEntity;
     }
   }
 }

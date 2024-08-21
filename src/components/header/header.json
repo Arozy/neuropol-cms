@@ -11,7 +11,7 @@
       "type": "string",
       "maxLength": 120,
       "required": true,
-      "unique": true
+      "unique": false
     },
     "primary": {
       "type": "component",
@@ -24,12 +24,12 @@
       "component": "button.buttons"
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

@@ -2,7 +2,8 @@
   "collectionName": "components_services_services",
   "info": {
     "displayName": "services",
-    "icon": "server"
+    "icon": "server",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -18,7 +19,7 @@
       "type": "string",
       "required": true,
       "maxLength": 60,
-      "unique": true
+      "unique": false
     }
   }
 }

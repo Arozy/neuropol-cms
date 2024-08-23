@@ -1,49 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface StepsSteps extends Schema.Component {
-  collectionName: 'components_steps_steps';
-  info: {
-    displayName: 'steps';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
-    Description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 120;
-      }>;
-    step: Attribute.Component<'steps.step-item', true> &
-      Attribute.SetMinMax<
-        {
-          max: 3;
-        },
-        number
-      >;
-  };
-}
-
-export interface StepsStepItem extends Schema.Component {
-  collectionName: 'components_steps_step_items';
-  info: {
-    displayName: 'step-item';
-  };
-  attributes: {
-    icon: Attribute.String & Attribute.Required & Attribute.Unique;
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 20;
-      }>;
-    Description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 60;
-      }>;
-  };
-}
-
 export interface TrainingsTrainings extends Schema.Component {
   collectionName: 'components_trainings_trainings';
   info: {
@@ -52,7 +8,7 @@ export interface TrainingsTrainings extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String & Attribute.Required;
-    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    name: Attribute.String & Attribute.Required;
     item: Attribute.Component<'trainings.training-item', true> &
       Attribute.Required;
     training_additionals: Attribute.Relation<
@@ -93,47 +49,87 @@ export interface TrainingsForm extends Schema.Component {
   };
 }
 
-export interface ServicesServices extends Schema.Component {
-  collectionName: 'components_services_services';
+export interface StepsSteps extends Schema.Component {
+  collectionName: 'components_steps_steps';
   info: {
-    displayName: 'services';
-    icon: 'server';
+    displayName: 'steps';
+    description: '';
   };
   attributes: {
-    service_item: Attribute.Component<'services.services-table', true> &
+    title: Attribute.String & Attribute.Required;
+    Description: Attribute.Text &
       Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    step: Attribute.Component<'steps.step-item', true> &
       Attribute.SetMinMax<
         {
-          min: 1;
+          max: 3;
         },
         number
       >;
+  };
+}
+
+export interface StepsStepItem extends Schema.Component {
+  collectionName: 'components_steps_step_items';
+  info: {
+    displayName: 'step-item';
+    description: '';
+  };
+  attributes: {
+    icon: Attribute.String & Attribute.Required;
     title: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetMinMaxLength<{
-        maxLength: 60;
+        maxLength: 20;
+      }>;
+    Description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 90;
       }>;
   };
 }
 
-export interface ServicesServicesTable extends Schema.Component {
-  collectionName: 'components_services_services_tables';
+export interface StaffStaff extends Schema.Component {
+  collectionName: 'components_staff_staff';
   info: {
-    displayName: 'services-table';
-    icon: 'layout';
+    displayName: 'staff';
+    icon: 'user';
     description: '';
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    price: Attribute.Decimal &
+    title: Attribute.String &
       Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 0.01;
-        },
-        number
-      >;
+      Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    items: Attribute.Component<'staff.staff-items', true> & Attribute.Required;
+  };
+}
+
+export interface StaffStaffItems extends Schema.Component {
+  collectionName: 'components_staff_staff_items';
+  info: {
+    displayName: 'staff-items';
+    icon: 'user';
+  };
+  attributes: {
+    photo: Attribute.Media<'images'>;
+    degree: Attribute.Enumeration<
+      ['Lic.', 'Mgr', 'Lekarz', 'Dr n. med.', 'Dr hab. n. med.', 'Prof.']
+    >;
+    name: Attribute.String & Attribute.Required;
+    position: Attribute.Enumeration<
+      ['Fizjoterapeuta', 'Neurologopeda', 'Terapeuta', 'Lekarz']
+    > &
+      Attribute.Required;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 260;
+      }>;
   };
 }
 
@@ -171,66 +167,6 @@ export interface StaticElementsFooter extends Schema.Component {
       Attribute.Required;
     open_hours: Attribute.Component<'footer-elements.opening-hours-column'> &
       Attribute.Required;
-  };
-}
-
-export interface StaffStaff extends Schema.Component {
-  collectionName: 'components_staff_staff';
-  info: {
-    displayName: 'staff';
-    icon: 'user';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.Unique &
-      Attribute.SetMinMaxLength<{
-        maxLength: 120;
-      }>;
-    items: Attribute.Component<'staff.staff-items', true> & Attribute.Required;
-  };
-}
-
-export interface StaffStaffItems extends Schema.Component {
-  collectionName: 'components_staff_staff_items';
-  info: {
-    displayName: 'staff-items';
-    icon: 'user';
-  };
-  attributes: {
-    photo: Attribute.Media<'images'>;
-    degree: Attribute.Enumeration<
-      ['Lic.', 'Mgr', 'Lekarz', 'Dr n. med.', 'Dr hab. n. med.', 'Prof.']
-    >;
-    name: Attribute.String & Attribute.Required;
-    position: Attribute.Enumeration<
-      ['Fizjoterapeuta', 'Neurologopeda', 'Terapeuta', 'Lekarz']
-    > &
-      Attribute.Required;
-    description: Attribute.Text &
-      Attribute.SetMinMaxLength<{
-        maxLength: 260;
-      }>;
-  };
-}
-
-export interface HeaderHeader extends Schema.Component {
-  collectionName: 'components_header_headers';
-  info: {
-    displayName: 'header';
-    icon: 'picture';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 120;
-      }>;
-    primary: Attribute.Component<'button.buttons'>;
-    secondary: Attribute.Component<'button.buttons'>;
-    image: Attribute.Media<'images'> & Attribute.Required;
   };
 }
 
@@ -274,11 +210,11 @@ export interface FooterElementsOpeningHoursColumn extends Schema.Component {
   collectionName: 'components_footer_elements_opening_hours_columns';
   info: {
     displayName: 'opening-hours-column';
+    description: '';
   };
   attributes: {
     title: Attribute.String &
       Attribute.Required &
-      Attribute.Unique &
       Attribute.SetMinMaxLength<{
         maxLength: 20;
       }>;
@@ -297,9 +233,10 @@ export interface FooterElementsFooterElements extends Schema.Component {
   collectionName: 'components_footer_elements_footer_elements';
   info: {
     displayName: 'footer-elements';
+    description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    title: Attribute.String & Attribute.Required;
     Description: Attribute.Text &
       Attribute.Required &
       Attribute.SetMinMaxLength<{
@@ -329,6 +266,69 @@ export interface FooterElementsColumns extends Schema.Component {
   };
 }
 
+export interface ServicesServices extends Schema.Component {
+  collectionName: 'components_services_services';
+  info: {
+    displayName: 'services';
+    icon: 'server';
+    description: '';
+  };
+  attributes: {
+    service_item: Attribute.Component<'services.services-table', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+  };
+}
+
+export interface ServicesServicesTable extends Schema.Component {
+  collectionName: 'components_services_services_tables';
+  info: {
+    displayName: 'services-table';
+    icon: 'layout';
+    description: '';
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    price: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0.01;
+        },
+        number
+      >;
+  };
+}
+
+export interface HeaderHeader extends Schema.Component {
+  collectionName: 'components_header_headers';
+  info: {
+    displayName: 'header';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    primary: Attribute.Component<'button.buttons'>;
+    secondary: Attribute.Component<'button.buttons'>;
+    image: Attribute.Media<'images'> & Attribute.Required;
+  };
+}
+
 export interface CtasCtaBanner extends Schema.Component {
   collectionName: 'components_ctas_cta_banners';
   info: {
@@ -348,20 +348,6 @@ export interface CtasCtaBanner extends Schema.Component {
       }>;
     left: Attribute.Component<'button.buttons'>;
     right: Attribute.Component<'button.buttons'>;
-  };
-}
-
-export interface ContactContact extends Schema.Component {
-  collectionName: 'components_contact_contacts';
-  info: {
-    displayName: 'contact';
-    icon: 'phone';
-  };
-  attributes: {
-    icon: Attribute.String & Attribute.Required;
-    name: Attribute.String & Attribute.Required;
-    value: Attribute.String & Attribute.Required;
-    action: Attribute.String;
   };
 }
 
@@ -386,6 +372,20 @@ export interface CardsCard extends Schema.Component {
       }>;
     cta: Attribute.Component<'button.buttons'>;
     icon: Attribute.String;
+  };
+}
+
+export interface ContactContact extends Schema.Component {
+  collectionName: 'components_contact_contacts';
+  info: {
+    displayName: 'contact';
+    icon: 'phone';
+  };
+  attributes: {
+    icon: Attribute.String & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    value: Attribute.String & Attribute.Required;
+    action: Attribute.String;
   };
 }
 
@@ -440,26 +440,26 @@ export interface AboutItemsAboutItems extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'steps.steps': StepsSteps;
-      'steps.step-item': StepsStepItem;
       'trainings.trainings': TrainingsTrainings;
       'trainings.training-item': TrainingsTrainingItem;
       'trainings.form': TrainingsForm;
-      'services.services': ServicesServices;
-      'services.services-table': ServicesServicesTable;
-      'static-elements.services': StaticElementsServices;
-      'static-elements.footer': StaticElementsFooter;
+      'steps.steps': StepsSteps;
+      'steps.step-item': StepsStepItem;
       'staff.staff': StaffStaff;
       'staff.staff-items': StaffStaffItems;
-      'header.header': HeaderHeader;
+      'static-elements.services': StaticElementsServices;
+      'static-elements.footer': StaticElementsFooter;
       'footer-elements.quick-links-column': FooterElementsQuickLinksColumn;
       'footer-elements.quick-link': FooterElementsQuickLink;
       'footer-elements.opening-hours-column': FooterElementsOpeningHoursColumn;
       'footer-elements.footer-elements': FooterElementsFooterElements;
       'footer-elements.columns': FooterElementsColumns;
+      'services.services': ServicesServices;
+      'services.services-table': ServicesServicesTable;
+      'header.header': HeaderHeader;
       'ctas.cta-banner': CtasCtaBanner;
-      'contact.contact': ContactContact;
       'cards.card': CardsCard;
+      'contact.contact': ContactContact;
       'button.primary-button': ButtonPrimaryButton;
       'button.buttons': ButtonButtons;
       'about-items.about-items': AboutItemsAboutItems;

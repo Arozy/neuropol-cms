@@ -1,7 +1,8 @@
 {
   "collectionName": "components_footer_elements_footer_elements",
   "info": {
-    "displayName": "footer-elements"
+    "displayName": "footer-elements",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,7 +10,7 @@
       "type": "string",
       "regex": "^\\\\s*([a-zA-Z]+\\\\s*){1,3}$",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "Description": {
       "type": "text",

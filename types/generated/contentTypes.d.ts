@@ -788,47 +788,20 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiArticleArticle extends Schema.SingleType {
+export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'article';
-    description: '';
+    displayName: 'Article';
   };
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
   attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }> &
-      Attribute.SetMinMaxLength<{
-        maxLength: 140;
-      }>;
-    comment: Attribute.String &
-      Attribute.Private &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.String;
+    content: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -844,12 +817,6 @@ export interface ApiArticleArticle extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::article.article',
-      'oneToMany',
-      'api::article.article'
-    >;
-    locale: Attribute.String;
   };
 }
 
@@ -980,6 +947,7 @@ export interface ApiSharedDatumSharedDatum extends Schema.SingleType {
     singularName: 'shared-datum';
     pluralName: 'shared-data';
     displayName: 'shared-data';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -990,6 +958,21 @@ export interface ApiSharedDatumSharedDatum extends Schema.SingleType {
     address: Attribute.String & Attribute.Required;
     facebook: Attribute.String & Attribute.Required;
     instagram: Attribute.String & Attribute.Required;
+    hours: Attribute.Relation<
+      'api::shared-datum.shared-datum',
+      'oneToMany',
+      'api::hour.hour'
+    >;
+    site_links: Attribute.Relation<
+      'api::shared-datum.shared-datum',
+      'oneToMany',
+      'api::site-link.site-link'
+    >;
+    other_links: Attribute.Relation<
+      'api::shared-datum.shared-datum',
+      'oneToMany',
+      'api::other-link.other-link'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

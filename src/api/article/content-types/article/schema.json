@@ -1,49 +1,25 @@
 {
-  "kind": "singleType",
+  "kind": "collectionType",
   "collectionName": "articles",
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "article",
-    "description": ""
+    "displayName": "Article"
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "title": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "type": "string",
-      "required": true,
-      "maxLength": 140
+      "required": true
     },
-    "comment": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "required": false,
-      "private": true
+    "description": {
+      "type": "string"
     },
     "content": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "richtext",
-      "required": true
+      "type": "richtext"
     }
   }
 }

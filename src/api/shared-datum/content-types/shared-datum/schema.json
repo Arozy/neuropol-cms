@@ -4,7 +4,8 @@
   "info": {
     "singularName": "shared-datum",
     "pluralName": "shared-data",
-    "displayName": "shared-data"
+    "displayName": "shared-data",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,6 +32,21 @@
     "instagram": {
       "type": "string",
       "required": true
+    },
+    "hours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hour.hour"
+    },
+    "site_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::site-link.site-link"
+    },
+    "other_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::other-link.other-link"
     }
   }
 }

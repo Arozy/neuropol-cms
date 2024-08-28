@@ -899,7 +899,6 @@ export interface ApiPagePage extends Schema.CollectionType {
       [
         'header.header',
         'steps.steps',
-        'steps.step-item',
         'cards.card',
         'button.primary-button',
         'button.buttons',
@@ -919,7 +918,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'footer-elements.footer-elements',
         'footer-elements.columns',
         'ctas.cta-banner',
-        'contact.contact'
+        'contact.contact',
+        'cards.card-section'
       ]
     > &
       Attribute.Required;

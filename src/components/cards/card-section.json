@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_cards_card_sections",
+  "info": {
+    "displayName": "card-section",
+    "icon": "expand"
+  },
+  "options": {},
+  "attributes": {
+    "comments": {
+      "type": "string",
+      "private": true
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.card",
+      "max": 3
+    }
+  }
+}

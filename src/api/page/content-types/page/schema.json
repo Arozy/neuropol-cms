@@ -22,7 +22,6 @@
       "components": [
         "header.header",
         "steps.steps",
-        "steps.step-item",
         "cards.card",
         "button.primary-button",
         "button.buttons",
@@ -42,7 +41,8 @@
         "footer-elements.footer-elements",
         "footer-elements.columns",
         "ctas.cta-banner",
-        "contact.contact"
+        "contact.contact",
+        "cards.card-section"
       ],
       "required": true
     },

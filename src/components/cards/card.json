@@ -17,7 +17,7 @@
       "type": "text",
       "maxLength": 140,
       "minLength": 40,
-      "required": true
+      "required": false
     },
     "cta": {
       "type": "component",
@@ -27,6 +27,11 @@
     "icon": {
       "type": "string",
       "regex": "^(icofont-|fa-)"
+    },
+    "hours": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::hour.hour"
     }
   }
 }

@@ -907,7 +907,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'static-elements.footer',
         'ctas.cta-banner',
         'contact.contact',
-        'cards.card-section'
+        'cards.card-section',
+        'about-items.about-items'
       ]
     > &
       Attribute.Required;

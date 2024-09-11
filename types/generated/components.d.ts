@@ -1,5 +1,42 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface StaticElementsServices extends Schema.Component {
+  collectionName: 'components_static_elements_services';
+  info: {
+    displayName: 'services';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 80;
+      }>;
+    Description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
+    item: Attribute.Component<'about-items.about-items', true> &
+      Attribute.Required;
+  };
+}
+
+export interface StaticElementsFooter extends Schema.Component {
+  collectionName: 'components_static_elements_footers';
+  info: {
+    displayName: 'footer';
+    description: '';
+  };
+  attributes: {
+    socials: Attribute.Component<'footer-elements.footer-elements'> &
+      Attribute.Required;
+    quick_links: Attribute.Component<'footer-elements.quick-links-column'> &
+      Attribute.Required;
+    open_hours: Attribute.Component<'footer-elements.opening-hours-column'> &
+      Attribute.Required;
+  };
+}
+
 export interface TrainingsTrainings extends Schema.Component {
   collectionName: 'components_trainings_trainings';
   info: {
@@ -93,43 +130,6 @@ export interface StepsStepItem extends Schema.Component {
   };
 }
 
-export interface StaticElementsServices extends Schema.Component {
-  collectionName: 'components_static_elements_services';
-  info: {
-    displayName: 'services';
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 80;
-      }>;
-    Description: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 500;
-      }>;
-    item: Attribute.Component<'about-items.about-items', true> &
-      Attribute.Required;
-  };
-}
-
-export interface StaticElementsFooter extends Schema.Component {
-  collectionName: 'components_static_elements_footers';
-  info: {
-    displayName: 'footer';
-    description: '';
-  };
-  attributes: {
-    socials: Attribute.Component<'footer-elements.footer-elements'> &
-      Attribute.Required;
-    quick_links: Attribute.Component<'footer-elements.quick-links-column'> &
-      Attribute.Required;
-    open_hours: Attribute.Component<'footer-elements.opening-hours-column'> &
-      Attribute.Required;
-  };
-}
-
 export interface StaffStaff extends Schema.Component {
   collectionName: 'components_staff_staff';
   info: {
@@ -167,25 +167,6 @@ export interface StaffStaffItems extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 260;
       }>;
-  };
-}
-
-export interface HeaderHeader extends Schema.Component {
-  collectionName: 'components_header_headers';
-  info: {
-    displayName: 'header';
-    icon: 'picture';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 120;
-      }>;
-    primary: Attribute.Component<'button.buttons'>;
-    secondary: Attribute.Component<'button.buttons'>;
-    image: Attribute.Media<'images'> & Attribute.Required;
   };
 }
 
@@ -329,6 +310,25 @@ export interface FooterElementsColumns extends Schema.Component {
   };
 }
 
+export interface HeaderHeader extends Schema.Component {
+  collectionName: 'components_header_headers';
+  info: {
+    displayName: 'header';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+    primary: Attribute.Component<'button.buttons'>;
+    secondary: Attribute.Component<'button.buttons'>;
+    image: Attribute.Media<'images'> & Attribute.Required;
+  };
+}
+
 export interface CtasCtaBanner extends Schema.Component {
   collectionName: 'components_ctas_cta_banners';
   info: {
@@ -362,6 +362,35 @@ export interface ContactContact extends Schema.Component {
     name: Attribute.String & Attribute.Required;
     value: Attribute.String & Attribute.Required;
     action: Attribute.String;
+  };
+}
+
+export interface ButtonPrimaryButton extends Schema.Component {
+  collectionName: 'components_button_primary_buttons';
+  info: {
+    displayName: 'primary-button';
+    icon: 'bell';
+    description: '';
+  };
+  attributes: {
+    primary_button: Attribute.Component<'button.buttons'>;
+  };
+}
+
+export interface ButtonButtons extends Schema.Component {
+  collectionName: 'components_button_buttons';
+  info: {
+    displayName: 'buttons';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 90;
+      }> &
+      Attribute.DefaultTo<'Sprawd\u017A teraz'>;
+    action: Attribute.String & Attribute.Required;
   };
 }
 
@@ -407,35 +436,6 @@ export interface CardsCardSection extends Schema.Component {
   };
 }
 
-export interface ButtonPrimaryButton extends Schema.Component {
-  collectionName: 'components_button_primary_buttons';
-  info: {
-    displayName: 'primary-button';
-    icon: 'bell';
-    description: '';
-  };
-  attributes: {
-    primary_button: Attribute.Component<'button.buttons'>;
-  };
-}
-
-export interface ButtonButtons extends Schema.Component {
-  collectionName: 'components_button_buttons';
-  info: {
-    displayName: 'buttons';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.String &
-      Attribute.Required &
-      Attribute.SetMinMaxLength<{
-        maxLength: 90;
-      }> &
-      Attribute.DefaultTo<'Sprawd\u017A teraz'>;
-    action: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface AboutItemsAboutItems extends Schema.Component {
   collectionName: 'components_about_items_about_items';
   info: {
@@ -458,16 +458,15 @@ export interface AboutItemsAboutItems extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'static-elements.services': StaticElementsServices;
+      'static-elements.footer': StaticElementsFooter;
       'trainings.trainings': TrainingsTrainings;
       'trainings.training-item': TrainingsTrainingItem;
       'trainings.form': TrainingsForm;
       'steps.steps': StepsSteps;
       'steps.step-item': StepsStepItem;
-      'static-elements.services': StaticElementsServices;
-      'static-elements.footer': StaticElementsFooter;
       'staff.staff': StaffStaff;
       'staff.staff-items': StaffStaffItems;
-      'header.header': HeaderHeader;
       'services.services': ServicesServices;
       'services.services-table': ServicesServicesTable;
       'footer-elements.quick-links-column': FooterElementsQuickLinksColumn;
@@ -475,12 +474,13 @@ declare module '@strapi/types' {
       'footer-elements.opening-hours-column': FooterElementsOpeningHoursColumn;
       'footer-elements.footer-elements': FooterElementsFooterElements;
       'footer-elements.columns': FooterElementsColumns;
+      'header.header': HeaderHeader;
       'ctas.cta-banner': CtasCtaBanner;
       'contact.contact': ContactContact;
-      'cards.card': CardsCard;
-      'cards.card-section': CardsCardSection;
       'button.primary-button': ButtonPrimaryButton;
       'button.buttons': ButtonButtons;
+      'cards.card': CardsCard;
+      'cards.card-section': CardsCardSection;
       'about-items.about-items': AboutItemsAboutItems;
     }
   }

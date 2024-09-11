@@ -25,6 +25,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::training-additional.training-additional"
+    },
+    "training_entities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::training-entity.training-entity"
     }
   }
 }
